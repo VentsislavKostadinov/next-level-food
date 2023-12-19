@@ -1,10 +1,10 @@
 'use client'
-
+import { NavLinkProps } from '@/app/model/nav-link-props'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import classes from './nav-link.module.scss'
 
-export default function NavLink({ href, children }) {
+export default function NavLink({ href, children }: NavLinkProps) {
     const path = usePathname()
 
     return (
