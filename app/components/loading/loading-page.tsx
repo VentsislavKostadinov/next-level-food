@@ -1,4 +1,4 @@
-import classes from './loading-component.module.scss'
+import classes from './loading-page.module.scss'
 import { LoadingPageProps } from '@/app/model/loading-page'
 
 const LoadingPage = ({ title }: LoadingPageProps) => {
