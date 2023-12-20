@@ -1,6 +1,6 @@
 import classes from './main-header-background.module.scss'
 
-export default function MainHeaderBackground() {
+const MainHeaderBackground = () => {
     return (
         <div className={classes['header-background']}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -30,3 +30,5 @@ export default function MainHeaderBackground() {
         </div>
     )
 }
+
+export default MainHeaderBackground
