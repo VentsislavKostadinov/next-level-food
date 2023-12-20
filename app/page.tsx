@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import classes from './page.module.scss'
 
-export default function Home() {
+const Home = () => {
     return (
         <>
             <header className={classes.header}>
@@ -49,3 +49,5 @@ export default function Home() {
         </>
     )
 }
+
+export default Home

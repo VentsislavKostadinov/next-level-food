@@ -3,7 +3,7 @@ import classes from './page.module.scss'
 import MealsGrid from '../components/meals/meals-grid'
 import { getMeals } from '../../lib/meals'
 
-export default async function MealsPage() {
+const MealsPage = async () => {
     const meals = await getMeals()
     return (
         <>
@@ -26,3 +26,5 @@ export default async function MealsPage() {
         </>
     )
 }
+
+export default MealsPage
