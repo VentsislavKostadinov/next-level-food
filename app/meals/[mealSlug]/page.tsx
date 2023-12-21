@@ -4,7 +4,7 @@ import { getMeal } from '@/lib/meals'
 import { MealSlugProps, MealProps } from '@/app/model/meal-slug'
 import HandlingError from '@/app/components/handling-error/handling-error'
 
-export const MealDetailsPage = ({ params }: MealSlugProps) => {
+const MealDetailsPage = ({ params }: MealSlugProps) => {
     const meal = getMeal(params.mealSlug) as MealProps
 
     if (!meal) {
@@ -35,8 +35,8 @@ export const MealDetailsPage = ({ params }: MealSlugProps) => {
             <main>
                 <ul className={classes.instructions}>
                     {listInstructions.map(
-                        (instruction: string) =>
-                            instruction && <li>{instruction}</li>,
+                        (instruction: string, index: number) =>
+                            instruction && <li key={index}>{instruction}</li>,
                     )}
                 </ul>
             </main>
