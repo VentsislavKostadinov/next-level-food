@@ -2,9 +2,19 @@ import classes from './page.module.scss'
 import Image from 'next/image'
 import { getMeal } from '@/lib/meals'
 import { MealSlugProps, MealProps } from '@/app/model/meal-slug'
+import HandlingError from '@/app/components/handling-error/handling-error'
 
 export const MealDetailsPage = ({ params }: MealSlugProps) => {
     const meal = getMeal(params.mealSlug) as MealProps
+
+    if (!meal) {
+        return (
+            <HandlingError
+                headline="Meal not found"
+                text="Unfortunately, we could not find the requested page or meal data!"
+            />
+        )
+    }
 
     const { image, title, creator, creator_email, summary, instructions } = meal
     const listInstructions = instructions.split(/\n/g)
