@@ -24,8 +24,6 @@ const ImagePicker = ({ label, name }: ImagePickerProps) => {
             return
         }
 
-        console.log(file)
-
         const fileReader = new FileReader()
 
         fileReader.onload = () => {
@@ -34,7 +32,6 @@ const ImagePicker = ({ label, name }: ImagePickerProps) => {
         }
 
         fileReader.readAsDataURL(file as Blob)
-        console.log(file)
     }
 
     return (
