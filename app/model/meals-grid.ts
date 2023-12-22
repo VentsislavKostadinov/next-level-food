@@ -1,5 +1,5 @@
-import { MealItemProps } from './meal-item'
+import { MealProps } from './meal-slug'
 
 export type MealsGridProps = {
-    meals: []
+    meals: MealProps[]
 }
