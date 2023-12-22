@@ -1,11 +1,12 @@
 import MealItem from './meal-item'
 import classes from './meals-grid.module.scss'
 import { MealsGridProps } from '../../model/meals-grid'
-// later will create the meals model array
-export default function MealsGrid({ meals }: any) {
+import { MealProps } from '@/app/model/meal-slug'
+
+const MealsGrid = ({ meals }: MealsGridProps) => {
     return (
         <ul className={classes.meals}>
-            {meals.map((meal: any) => (
+            {meals.map((meal: MealProps) => (
                 <li key={meal.id}>
                     <MealItem {...meal} />
                 </li>
@@ -13,3 +14,5 @@ export default function MealsGrid({ meals }: any) {
         </ul>
     )
 }
+
+export default MealsGrid
