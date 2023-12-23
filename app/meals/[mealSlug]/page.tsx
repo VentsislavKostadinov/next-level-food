@@ -3,6 +3,20 @@ import Image from 'next/image'
 import { getMeal } from '@/lib/meals'
 import { MealSlugProps, MealProps } from '@/app/model/meal-slug'
 import HandlingError from '@/app/components/handling-error/handling-error'
+import { notFound } from 'next/navigation'
+
+export const generateMetadata = async ({ params }: MealSlugProps) => {
+    const meal = getMeal(params.mealSlug) as MealProps
+
+    if (!meal) {
+        notFound()
+    }
+
+    return {
+        title: meal.title,
+        description: meal.summary,
+    }
+}
 
 const MealDetailsPage = ({ params }: MealSlugProps) => {
     const meal = getMeal(params.mealSlug) as MealProps
