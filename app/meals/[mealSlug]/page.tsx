@@ -36,7 +36,11 @@ const MealDetailsPage = ({ params }: MealSlugProps) => {
         <>
             <header className={classes.header}>
                 <div className={classes.image}>
-                    <Image src={image} alt={title} fill />
+                    <Image
+                        src={`https://ventsislav-kostadinov-next-food-level.s3.eu-central-1.amazonaws.com/${image}`}
+                        alt={title}
+                        fill
+                    />
                 </div>
                 <div className={classes.headerText}>
                     <h1>{title}</h1>
