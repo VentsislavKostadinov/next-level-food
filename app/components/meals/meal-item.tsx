@@ -14,7 +14,11 @@ export default function MealItem({
         <article className={classes.meal}>
             <header>
                 <div className={classes.image}>
-                    <Image src={image} alt={title} fill />
+                    <Image
+                        src={`https://ventsislav-kostadinov-next-food-level.s3.eu-central-1.amazonaws.com/${image}`}
+                        alt={title}
+                        fill
+                    />
                 </div>
                 <div className={classes.headerText}>
                     <h2>{title}</h2>
