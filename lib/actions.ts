@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation'
 
 import { saveMeal } from './meals'
+import { revalidatePath } from 'next/cache'
 
 const isInvalidText = (text: FormDataEntryValue | null) => {
     return !text || text === ''
@@ -33,5 +34,6 @@ export const shareMeal = async (prevState: FormData, formData: FormData) => {
         }
     }
     await saveMeal(meal)
+    revalidatePath('/meals')
     redirect('/meals')
 }
