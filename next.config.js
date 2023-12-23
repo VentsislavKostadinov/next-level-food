@@ -14,5 +14,3 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-
-//hostname: 'next-food-level.s3.eu-central-1.amazonaws.com/',

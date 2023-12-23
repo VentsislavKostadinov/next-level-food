@@ -1,34 +1,43 @@
-import fs from 'node:fs'
+import { S3 } from '@aws-sdk/client-s3'
 import sql from 'better-sqlite3'
 import slugify from 'slugify'
 
+//@ts-ignore
+const s3 = new S3({
+    region: 'eu-central-1',
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    },
+})
+
 const db = sql('meals.db')
 
-export const getMeals = async () => {
+export async function getMeals() {
     await new Promise((resolve) => setTimeout(resolve, 5000))
     return db.prepare('SELECT * FROM meals').all()
 }
 
-export const getMeal = (slug: string) => {
+export function getMeal(slug: string) {
     return db.prepare('SELECT * FROM meals WHERE slug = ?').get(slug)
 }
 
-export const saveMeal = async (meal: any) => {
+export async function saveMeal(meal: any) {
     meal.slug = slugify(meal.title, { lower: true })
 
     const extension = meal.image.name.split('.').pop()
     const fileName = `${meal.slug}.${extension}`
 
-    const stream = fs.createWriteStream(`public/images/${fileName}`)
     const bufferedImage = await meal.image.arrayBuffer()
 
-    stream.write(Buffer.from(bufferedImage), (error) => {
-        if (error) {
-            throw new Error('Saving image failed!')
-        }
+    s3.putObject({
+        Bucket: 'ventsislav-kostadinov-next-food-level',
+        Key: fileName,
+        Body: Buffer.from(bufferedImage),
+        ContentType: meal.image.type,
     })
 
-    meal.image = `/images/${fileName}`
+    meal.image = fileName
 
     db.prepare(
         `
@@ -46,3 +55,5 @@ export const saveMeal = async (meal: any) => {
   `,
     ).run(meal)
 }
+
+//  Bucket: 'ventsislav-kostadinov-next-food-level',
