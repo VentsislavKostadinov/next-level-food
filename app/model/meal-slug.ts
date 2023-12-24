@@ -1,6 +1,7 @@
 export type MealSlugProps = {
     params: {
         mealSlug: string
+        sizes?: string
     }
 }
 
