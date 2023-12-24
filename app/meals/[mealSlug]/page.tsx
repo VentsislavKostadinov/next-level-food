@@ -19,6 +19,7 @@ export const generateMetadata = async ({ params }: MealSlugProps) => {
 }
 
 const MealDetailsPage = ({ params }: MealSlugProps) => {
+    const sizes = (params.sizes = '(max-width: auto)')
     const meal = getMeal(params.mealSlug) as MealProps
 
     if (!meal) {
@@ -37,9 +38,10 @@ const MealDetailsPage = ({ params }: MealSlugProps) => {
             <header className={classes.header}>
                 <div className={classes.image}>
                     <Image
-                        src={`https://ventsislav-kostadinov-next-food-level.s3.eu-central-1.amazonaws.com/${image}`}
+                        src={`${process.env.NEXT_PUBLIC_IMAGES_ENDPOINT}/${image}`}
                         alt={title}
                         fill
+                        sizes={sizes}
                     />
                 </div>
                 <div className={classes.headerText}>

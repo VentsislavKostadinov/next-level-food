@@ -4,4 +4,5 @@ export type MealItemProps = {
     image: string
     summary: string
     creator: string
+    sizes?: string
 }
