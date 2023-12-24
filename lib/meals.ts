@@ -28,20 +28,19 @@ export const saveMeal = async (meal: any) => {
     const extension = meal.image.name.split('.').pop()
     const fileName = `${meal.slug}.${extension}`
 
-    try {
-        const bufferedImage = await meal.image.arrayBuffer()
+    const bufferedImage = await meal.image.arrayBuffer()
 
-        s3.putObject({
-            Bucket: 'ventsislav-kostadinov-next-food-level',
-            Key: fileName,
-            Body: Buffer.from(bufferedImage),
-            ContentType: meal.image.type,
-        })
+    s3.putObject({
+        Bucket: 'ventsislav-kostadinov-next-food-level',
+        Key: fileName,
+        Body: bufferedImage,
+        ContentType: meal.image.type,
+    })
 
-        meal.image = fileName
+    meal.image = fileName
 
-        db.prepare(
-            `
+    db.prepare(
+        `
         INSERT INTO meals
           (title, summary, instructions, creator, creator_email, image, slug)
         VALUES (
@@ -54,8 +53,5 @@ export const saveMeal = async (meal: any) => {
           @slug
         )
       `,
-        ).run(meal)
-    } catch (e: any) {
-        console.log(e)
-    }
+    ).run(meal)
 }
