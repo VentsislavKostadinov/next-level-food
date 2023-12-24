@@ -16,7 +16,7 @@ export default function MealItem({
             <header>
                 <div className={classes.image}>
                     <Image
-                        src={`${process.env.DB_IMAGES_ENDPOINT}/${image}`}
+                        src={`${process.env.NEXT_PUBLIC_IMAGES_ENDPOINT}/${image}`}
                         alt={title}
                         fill
                         sizes={sizes}
