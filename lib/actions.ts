@@ -1,10 +1,12 @@
 'use server'
 
+const process = require('process')
 import { redirect } from 'next/navigation'
 
 import { saveMeal } from './meals'
 import { revalidatePath } from 'next/cache'
-
+process.noDeprecation = true
+console.log('actions', process.noDeprecation)
 const isInvalidText = (text: FormDataEntryValue | null) => {
     return !text || text === ''
 }

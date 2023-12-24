@@ -1,6 +1,8 @@
 import { S3 } from '@aws-sdk/client-s3'
 import sql from 'better-sqlite3'
 import slugify from 'slugify'
+const process = require('process')
+process.noDeprecation = true
 
 //@ts-ignore
 const s3 = new S3({
