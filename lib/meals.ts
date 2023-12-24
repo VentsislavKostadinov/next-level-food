@@ -6,8 +6,8 @@ import slugify from 'slugify'
 const s3 = new S3({
     region: 'eu-central-1',
     credentials: {
-        accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+        accessKeyId: process.env.DB_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.DB_AWS_SECRET_ACCESS_KEY,
     },
 })
 

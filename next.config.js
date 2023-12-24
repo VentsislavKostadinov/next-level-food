@@ -4,7 +4,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: process.env.NEXT_PUBLIC_AWS_BUCKET_ENDPOINT,
+                hostname: process.env.DB_AWS_BUCKET_ENDPOINT,
                 port: '',
                 pathname: '/**',
             },
