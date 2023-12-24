@@ -28,8 +28,6 @@ export const saveMeal = async (meal: any) => {
     const extension = meal.image.name.split('.').pop()
     const fileName = `${meal.slug}.${extension}`
 
-    console.log('before try block')
-
     try {
         const bufferedImage = await meal.image.arrayBuffer()
 
@@ -39,8 +37,6 @@ export const saveMeal = async (meal: any) => {
             Body: Buffer.from(bufferedImage),
             ContentType: meal.image.type,
         })
-
-        console.log('after try block')
 
         meal.image = fileName
 

@@ -34,7 +34,6 @@ export const shareMeal = async (prevState: FormData, formData: FormData) => {
                 message: 'Invalid Input!',
             }
         }
-        console.log('meal')
         await saveMeal(meal)
         revalidatePath('/meals')
         redirect('/meals')
