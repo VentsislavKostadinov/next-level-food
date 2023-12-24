@@ -8,10 +8,6 @@ import { useFormState } from 'react-dom'
 const ShareMealPage = () => {
     //@ts-ignore
     const [state, formAction] = useFormState(shareMeal, { message: null })
-
-    console.log('state ', state)
-    console.log('shareMeal ', shareMeal)
-    console.log('formAction ', formAction)
     return (
         <>
             <header className={classes.header}>
