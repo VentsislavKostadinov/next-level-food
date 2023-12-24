@@ -57,7 +57,7 @@ const ShareMealPage = () => {
                         ></textarea>
                     </p>
                     <ImagePicker label="image" name="image" />
-                    {state.message && <p>{state.message}</p>}
+                    {state?.message && <p>{state.message}</p>}
                     <p className={classes.actions}>
                         <MealsFormSubmit />
                     </p>
