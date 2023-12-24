@@ -1,5 +1,4 @@
 {
-    "homepage": "https://ventsislavkostadinov.github.io/next-level-food",
     "name": "next-level-food",
     "version": "0.1.0",
     "private": true,
@@ -8,9 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "prepare": "husky install",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d build"
+        "prepare": "husky install"
     },
     "dependencies": {
         "next": "14.0.4",
@@ -29,7 +26,6 @@
         "better-sqlite3": "^9.2.2",
         "eslint": "^8",
         "eslint-config-next": "14.0.4",
-        "gh-pages": "^6.1.1",
         "husky": "^8.0.3",
         "lint-staged": "^15.2.0",
         "prettier": "^3.1.1",
